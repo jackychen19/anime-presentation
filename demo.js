@@ -1,28 +1,40 @@
-// Wrap every letter in a span
-var textWrapper = document.querySelector('.ml1 .letters');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+// CSS Selector
+anime({
+  targets: '.css-selector-demo',
+  translateX: 250
+});
 
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml1 .letter',
-    scale: [0.3,1],
-    opacity: [0,1],
-    translateZ: 0,
-    easing: "easeOutExpo",
-    duration: 600,
-    delay: (el, i) => 70 * (i+1)
-  }).add({
-    targets: '.ml1 .line',
-    scaleX: [0,1],
-    opacity: [0.5,1],
-    easing: "easeOutExpo",
-    duration: 700,
-    offset: '-=875',
-    delay: (el, i, l) => 80 * (l - i)
-  }).add({
-    targets: '.ml1',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 1000
-  });
+// DOM Node / Nodelist
+var elements = document.querySelectorAll('.dom-node-demo');
+
+anime({
+  targets: elements,
+  translateX: 270
+});
+
+// Javascript Object
+var logEl = document.querySelector('.battery-log');
+
+var battery = {
+  charged: '0%',
+  cycles: 120
+}
+
+anime({
+  targets: battery,
+  charged: '100%',
+  cycles: 130,
+  round: 1,
+  easing: 'linear',
+  update: function() {
+    logEl.innerHTML = JSON.stringify(battery);
+  }
+});
+
+// Array
+var el = document.querySelector('.mixed-array-demo');
+
+anime({
+  targets: [el, '.line-2'],
+  translateX: 100
+});
