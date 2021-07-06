@@ -1,40 +1,33 @@
-// CSS Selector
-anime({
-  targets: '.css-selector-demo',
-  translateX: 250
-});
+// const basicAnimation = anime({
+//   targets: '.basic',
+//   translateX: 250,
+// })
 
-// DOM Node / Nodelist
-var elements = document.querySelectorAll('.dom-node-demo');
+const multipleAnimation = anime({
+  targets: '.js-box',
+  translateX: (elm, index, t) => index * 50,
+  scale: 2,
+  easing: 'easeInOutSine',
+  delay: (elm, index, t) => index * 20,
+  duration: 1200,
+  loop: true,
+  direction: 'alternate',
+})
 
-anime({
-  targets: elements,
-  translateX: 270
-});
-
-// Javascript Object
-var logEl = document.querySelector('.battery-log');
-
-var battery = {
-  charged: '0%',
-  cycles: 120
-}
-
-anime({
-  targets: battery,
-  charged: '100%',
-  cycles: 130,
-  round: 1,
-  easing: 'linear',
-  update: function() {
-    logEl.innerHTML = JSON.stringify(battery);
-  }
-});
-
-// Array
-var el = document.querySelector('.mixed-array-demo');
-
-anime({
-  targets: [el, '.line-2'],
-  translateX: 100
-});
+// const boxesAnimation = anime({
+//   targets: '.js-box',
+//   translateY: [150, 50],
+//   backgroundColor: (el, i, t) => {
+//     const r = 58 + (i * 12);
+//     const g = 35 + (i * 12);
+//     const b = 220;
+//     const color = `rgb(${r}, ${g}, ${b})`;
+//     return color;
+//   },
+//   duration: 900,
+//   easing: 'easeOutElastic',
+//   elasticity: 500,
+//   delay: (el, i, t) => i * 20,
+//   loop: true,
+//   direction: 'alternate',
+// });
